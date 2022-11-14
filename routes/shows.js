@@ -18,18 +18,19 @@ showRouter.get("/genres/:genre", async (req, res) => {
 showRouter.put("/:showId/watched", async (req, res) => {
     target = await Show.findOne({where: {id: req.params.showId, status: "watched"}})
     target.rating = req.body
+    res.sendStatus(200)
 })
 
 showRouter.put("/:showId/updates", async (req, res) => {
     target = await Show.findOne({where: {id: req.params.showId}})
     await target.update(req.body)
-    res.send(200)
+    res.sendStatus(200)
 })
 
 showRouter.delete("/:showId", async (req, res) => {
     target = await Show.findOne({where: {id: req.params.showId}})
     await target.destroy();
-    res.send(200)
+    res.sendStatus(200)
 })
 
 

@@ -18,7 +18,7 @@ userRouter.get("/:id/shows", async (req, res) => {
 userRouter.put("/:id/shows/:showId", async (req, res) => {
     target = await Show.findOne({where: {id: req.params.showId}})
     await User.addShow(target);
-    res.send(200);
+    res.sendStatus(200);
 })
 
 
